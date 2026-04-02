@@ -11,4 +11,3 @@ def test_title(cart_page):
 def test_review_order(cart_page):
     cart_page.open_page()
     cart_page.check_review_order_is_displayed()
-

@@ -13,5 +13,3 @@ class ProductPage(BasePage):
 
     def get_page_title(self):
         return self.get_text(loc.page_title)
-
-

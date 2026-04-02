@@ -28,6 +28,9 @@ class BasePage:
     def get_text(self, locator):
         return self.find(locator).text.strip()
 
+    def clear_text(self, text):
+        return text.strip()
+
     def check_title_is(self):
         return self.driver.title
 
@@ -45,3 +48,10 @@ class BasePage:
 
     def wait_for_invisible(self, locator, time=10):
         return WebDriverWait(self.driver, time).until(EC.invisibility_of_element_located(locator))
+
+    def check_that_default_state_of_checkboxes_is_unchecked(self, list_of_checkboxes):
+        for item in list_of_checkboxes:
+            assert item.get_attribute("checked") is None
+
+    def get_current_url(self):
+        return self.driver.current_url

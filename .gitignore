@@ -5,5 +5,5 @@ __pycache__/
 pages/__pycache__/
 pages/locators/__pycache__/
 tests/__pycache__/
-
+.idea/
 

@@ -31,8 +31,8 @@ class BasePage:
     def clear_text(self, text):
         return text.strip()
 
-    def check_title_is(self):
-        return self.driver.title
+    def check_title_is(self, title):
+        assert self.driver.title == title
 
     def check_element_is_displayed(self, locator):
         return self.find(locator).is_displayed()
@@ -55,3 +55,12 @@ class BasePage:
 
     def get_current_url(self):
         return self.driver.current_url
+
+    def wait_for_inner_text_is(self, locator, number, time=10):
+        return WebDriverWait(self.driver, time).until(
+            lambda d: self.find(locator).get_attribute('innerText') == str(number)
+        )
+
+    def wait_for_current_url_is(self, current_url):
+        return WebDriverWait(self.driver, 10).until(EC.url_to_be(current_url))
+

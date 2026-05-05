@@ -53,14 +53,13 @@ class BasePage:
         for item in list_of_checkboxes:
             assert item.get_attribute("checked") is None
 
-    def get_current_url(self):
-        return self.driver.current_url
+    def check_current_url_is(self, current_url):
+        assert self.driver.current_url == current_url
 
-    def wait_for_inner_text_is(self, locator, number, time=10):
+    def wait_for_inner_text_is(self, locator, text, time=10):
         return WebDriverWait(self.driver, time).until(
-            lambda d: self.find(locator).get_attribute('innerText') == str(number)
+            lambda d: self.find(locator).get_attribute('innerText') == str(text)
         )
 
     def wait_for_current_url_is(self, current_url):
         return WebDriverWait(self.driver, 10).until(EC.url_to_be(current_url))
-

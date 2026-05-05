@@ -27,3 +27,11 @@ class CartPage(BasePage):
         value = self.find_all(loc.list_value_of_product_loc)[index_of_product].get_attribute('value')
         assert int(value) == value_of_product
 
+    def check_that_product_price_is_correct(self, index_of_product, expected_price):
+        price = self.clean_price(self.find_all(loc.list_of_product_prices_loc)[index_of_product].text)
+        assert expected_price == price
+
+
+    def check_that_subtotal_price_in_cart_is_correct(self):
+        prices_of_product = [self.clean_price(p.text) for p in self.find_all(loc.list_of_product_prices_loc)]
+        assert sum(prices_of_product) == self.get_price(loc.subtotal_price_loc)

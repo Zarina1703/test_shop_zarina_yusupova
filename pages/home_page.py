@@ -15,17 +15,6 @@ class HomePage(BasePage):
         self.find(loc.continue_shopping_button_loc).click()
         self.wait_for_inner_text_is(loc.count_of_product_in_cart_loc, expected_count)
 
-    # def add_first_product_to_cart(self):
-    #     actions = ActionChains(self.driver)
-    #     actions.move_to_element(self.find_all(loc.list_of_images_loc)[0]).perform()
-    #     self.find_all(loc.list_of_icon_of_cart_loc)[0].click()
-    #
-    # def add_second_product_to_cart(self):
-    #     actions = ActionChains(self.driver)
-    #     actions.move_to_element(self.find_all(loc.list_of_images_loc)[1]).perform()
-    #     self.find_all(loc.list_of_icon_of_cart_loc)[0].click()
-
-
     def add_product_to_cart_by_index(self, index=0):
         actions = ActionChains(self.driver)
         actions.move_to_element(self.find_all(loc.list_of_images_loc)[index]).perform()

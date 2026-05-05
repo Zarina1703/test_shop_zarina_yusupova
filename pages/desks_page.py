@@ -28,6 +28,12 @@ class DesksPage(BasePage):
         names = [self.clear_text(n.text) for n in self.find_all(loc.list_of_names_loc)]
         return names
 
+    def check_that_ascending_sorting_is_correct(self, list_of_items):
+        assert list_of_items == sorted(list_of_items)
+
+    def check_that_descending_sorting_is_correct(self, list_of_items):
+        assert list_of_items == sorted(list_of_items, reverse=True)
+
     def list_of_checkboxes(self):
         return self.find_all(loc.list_of_checkboxes_loc)
 
